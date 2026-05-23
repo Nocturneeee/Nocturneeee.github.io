@@ -1219,9 +1219,7 @@ function onCanvasClick(event) {
 
 renderer.domElement.addEventListener("click", onCanvasClick);
 
-animate();
-
-renderer.domElement.addEventListener('click', onCanvasClick);
+document.body.classList.add("intro-started");
 
 animate();
 
