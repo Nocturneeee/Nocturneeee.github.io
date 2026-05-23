@@ -54,9 +54,17 @@ const centralGlow = createGlowMaterial('rgba(255,255,255,0.8)', 156, 0.25);
 centralGlow.scale.set(8, 8, 1);
 scene.add(centralGlow);
 
+const nebulaColors = [
+  'rgba(255, 102, 255, 0.6)',
+  'rgba(204, 102, 255, 0.6)',
+  'rgba(153, 102, 255, 0.6)',
+  'rgba(102, 153, 255, 0.6)',
+  'rgba(102, 255, 255, 0.6)',
+  'rgba(255, 153, 255, 0.6)'
+];
+
 for (let i = 0; i < 15; i++) {
-  const hue = Math.random() * 360;
-  const color = `hsla(${hue}, 80%, 50%, 0.6)`;
+  const color = nebulaColors[Math.floor(Math.random() * nebulaColors.length)];
   const nebula = createGlowMaterial(color, 256);
   nebula.scale.set(100, 100, 1);
   nebula.position.set(
