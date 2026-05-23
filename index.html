@@ -61,20 +61,22 @@
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     let player;
-     const startTime = 227;
-    const endTime = 261;
+    const startTime = 156; // 2:36 dalam detik
+    const endTime = 225; // 3:45 dalam detik
     window.onYouTubeIframeAPIReady = function() {
       player = new YT.Player('player', {
         height: '0',
         width: '0',
-        videoId: 'd4OMqGKBl6E',
+        videoId: 'fMLDOTZ_rjE',
         playerVars: {
           autoplay: 0,
           start: startTime,
           end: endTime,
           controls: 0,
           loop: 1,
-          playlist: 'd4OMqGKBl6E'
+          playlist: 'fMLDOTZ_rjE',
+          rel: 0,
+          modestbranding: 1
         },
         events: {
           onReady: () => {
@@ -84,7 +86,7 @@
           },
           onStateChange: (event) => {
             if (event.data === YT.PlayerState.ENDED) {
-              player.seekTo(90);
+              player.seekTo(startTime);
             }
           }
         }
