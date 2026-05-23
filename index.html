@@ -85,18 +85,31 @@
             btn.innerText = "Mainkan Musik 🎵";
           },
           onStateChange: (event) => {
+            const btn = document.getElementById('musicButton');
             if (event.data === YT.PlayerState.ENDED) {
               player.seekTo(startTime);
+              player.playVideo();
+              btn.innerText = "Jeda Musik ⏸";
+            } else if (event.data === YT.PlayerState.PLAYING) {
+              btn.innerText = "Jeda Musik ⏸";
+            } else if (event.data === YT.PlayerState.PAUSED) {
+              btn.innerText = "Lanjutkan Musik ▶";
             }
           }
         }
       });
     };
 
-    document.getElementById('musicButton').addEventListener('click', () => {
-      if (player) {
+    const musicButton = document.getElementById('musicButton');
+    musicButton.addEventListener('click', () => {
+      if (!player) return;
+      const state = player.getPlayerState();
+      if (state === YT.PlayerState.PLAYING) {
+        player.pauseVideo();
+        musicButton.innerText = "Lanjutkan Musik ▶";
+      } else {
         player.playVideo();
-        document.getElementById('musicButton').style.display = 'none';
+        musicButton.innerText = "Jeda Musik ⏸";
       }
     });
   </script>
